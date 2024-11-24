@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="estilo.css">
+  <title>Bar do Seu Silvano</title>
+</head>
+<body>
+  <header>
+    <h1>Bar do Seu Silvano</h1>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="#historia">História</a></li>
+      <li><a href="#bebidas">Bebidas</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </nav>
+
+  <!-- História do Bar -->
+  <section id="historia" class="historia">
+    <h2>Conheça Nossa História</h2>
+    <p>O Bar do Seu Silvano começou há mais de 6 anos em uma pequena esquina do bairro. Conhecido pelo seu ambiente acolhedor e sua
+       excelente seleção de bebidas, o bar se tornou um ponto de encontro para amigos e famílias. Nosso compromisso é proporcionar
+       uma experiência única, com as melhores bebidas e um atendimento especial.</p>
+  </section>
+
+  <!-- Seleção de Bebidas -->
+  <section id="bebidas">
+    <h2 style="text-align: center;">Escolha suas Bebidas</h2>
+    <div class="grid-container">
+      <div class="bebida">
+        <img src="./img/51.jpeg" alt="51">
+        <label><input type="checkbox" value="51"> 51</label>
+        </div>
+      <div class="bebida">
+        <img src="./img/vodka.jpeg" alt="Vodka">
+        <label><input type="checkbox" value="Vodka"> Vodka</label>
+        </div>
+      <div class="bebida">
+        <img src="./img/velho.jpeg" alt="Velho Barreiro">
+        <label><input type="checkbox" value="Velho Barreiro"> Velho Barreiro</label>
+      </div>
+      <div class="bebida">
+        <img src="./img/dreer.jpeg" alt="Drea">
+        <label><input type="checkbox" value="Drea"> Drea</label>
+      </div>
+      <div class="bebida">
+        <img src="./img/royal.webp" alt="Whisky">
+        <label><input type="checkbox" value="Whisky">Royal</label>
+      </div>     
+      <div class="bebida">
+        <img src="https://bretas.vtexassets.com/arquivos/ids/201435-800-auto?v=638376352000370000&width=800&height=auto&aspect=true" alt="Velho Barreiro">
+        <label><input type="checkbox" value="Velho Barreiro">Brahma </label>
+        </div>
+      <div class="bebida">
+        <img src="https://cms.kaiser.com.br/media/asdhd2rz/kaiser_lata_350ml.webp" alt="Kaiser">
+        <label><input type="checkbox" value="Cerveja"> KAISER</label>
+        </div>
+      <div class="bebida">
+        <img src="https://nossadistribuidorabebidas.com.br/wp-content/uploads/2021/12/nossa-distribuidora-skol-269ml.webp" alt="Whisky">
+        <label><input type="checkbox" value="Cerveja"> SKOL</label>
+      </div>
+      <div class="bebida">
+        <img src="https://down-br.img.susercontent.com/file/7a28853a54a8b3f7f81096de616db316" alt="Whisky">
+        <label><input type="checkbox" value="Cerveja"> Energetico</label>
+      </div>
+      <!-- Adicione mais bebidas conforme necessário -->
+    </div>
+    <button class="botao-enviar" onclick="enviarPedido()">Enviar Pedido via WhatsApp</button>
+  </section>
+
+  <!-- Rodapé -->
+  <footer id="contato">
+    <p>&copy; 2023 Bar do Seu Silvano - Todos os direitos reservados.</p>
+    <p>Endereço: Rua alagoas, 967 - Jardim iguaçu</p>
+    <p>Telefone: (11) 99999-9999</p>
+    <p>Horário de Funcionamento: Segunda a segunda, das 8h às 02h</p>
+  </footer>
+
+  <script>
+    function enviarPedido() {
+      const checkboxes = document.querySelectorAll('.bebida input[type="checkbox"]');
+      let pedidos = [];
+
+      checkboxes.forEach(checkbox => {
+        if (checkbox.checked) {
+          pedidos.push(checkbox.value);
+        }
+      });
+
+      if (pedidos.length === 0) {
+        alert("Por favor, selecione pelo menos uma bebida.");
+        return;
+      }
+
+      const mensagem = `Olá, gostaria de pedir as seguintes bebidas: ${pedidos.join(", ")}`;
+      const telefone = "5541997743602"; // Substitua pelo número desejado com DDI
+      const urlWhatsApp = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;;
+
+      window.open(urlWhatsApp, '_blank');
+    }
+  </script>
+</body>
+</html>
